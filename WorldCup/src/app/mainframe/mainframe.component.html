@@ -1,0 +1,131 @@
+<style>
+    .ml {
+        width: 90%;
+    }
+</style>
+<div class="container-fluid w-75">
+    <h1 class="text-center mt-3">World Cup 2023 🏆 </h1>
+    <div class="row d-flex justify-content-center ">
+        <div class="card ml mt-3">
+            <div class="card-header">
+                <h5 class="text-center">Admin Team Portal</h5>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row"><label for="">Enter Team name</label></div>
+                        <input type="text" class="form-control" [(ngModel)]="team"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="row"><label for="">Enter Team Wins</label></div>
+                        <div class="row"><input type="number" class="form-control" [(ngModel)]="Wins"
+                                [ngModelOptions]="{standalone: true}"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row"><label for="">Enter Team Loss </label></div>
+                        <div class="row"><input type="number" class="form-control" [(ngModel)]="loss"
+                                [ngModelOptions]="{standalone: true}"></div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="row"><label for="">Enter Result</label></div>
+                        <div class="row">
+                            <!-- <select name="" id="" class="form-control">
+                            <option value=""></option>
+                            <option value="selected">Selected</option>
+                            <option value="Not Selected">Not Selected</option>
+                           </select> -->
+                            <input type="text" class="form-control" [(ngModel)]="result"
+                                [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row"><label for="">Enter Message</label></div>
+                        <div class="row"><input type="text" class="form-control" [(ngModel)]="status"
+                                [ngModelOptions]="{standalone: true}"></div>
+                    </div>
+                </div>
+                <div class="row mt-3 text-center">
+                    <div class="col-12">
+                        <button class=" col-4 btn btn-success" (click)="save()">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+    <h1 class="text-center">Team List</h1>
+    <table class="table mt-2">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Team</td>
+                <td>Wins</td>
+                <td>Loss</td>
+                <td>Result</td>
+                <td>Description</td>
+                <td>Edit/Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of CricketTeam">
+                <td>{{c.id}} </td>
+                <td>{{c.team}} </td>
+                <td> {{c.wins}} </td>
+                <td> {{c.loss}} </td>
+                <td> {{c.result}} </td>
+                <td> {{c.status}} </td>
+                <td><button class="btn btn-warning" (click)="updateInit(c)">Edit</button><button class="btn btn-danger" (click)="deletecricket(c)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="text-center mt-3 mb-3"> Card Model Team List </h2>
+<div class="containter-fluid d-flex justify-content-center flex-wrap">
+   
+    <div class="card m-2 bg-primary text-center" style="width: 200px;" *ngFor="let c of CricketTeam">
+        <div class="row mt-1">
+            <div class="col-6 fw-bolder"> ID </div>
+            <div class="col-6 fw-bolder"> {{c.id}} </div>
+        </div>
+        <hr>
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Team</div>
+            <div class="col-6 fw-bolder"> {{c.team}} </div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Wins</div>
+            <div class="col-6 fw-bolder text-white"> {{c.wins}} </div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Loss</div>
+            <div class="col-6 fw-bolder text-danger"> {{c.loss}} </div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Result</div>
+            <div class="col-6 fw-bolder"> {{c.result}} </div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Edit</div>
+            <div class="col-6"><button class="btn btn-warning" (click)="updateInit(c)">Edit</button></div>
+        </div>
+        
+        <div class="row mt-2">
+            <div class="col-6 fw-bolder">Delete</div>
+            <div class="col-6"><button class="btn btn-danger" (click)="deletecricket(c)">delete</button></div>
+        </div>
+    </div>
+</div>
